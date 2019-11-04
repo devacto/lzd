@@ -86,18 +86,11 @@ def process_row(row, i_sql_engine):
 
 # main method.
 def main():
-    # configure logging.
     logging.basicConfig(level=logging.INFO)
-
-    # connection string for sqlalchemy.
     connect_string = 'mysql+mysqlconnector://{0}:{1}@{2}/{3}'.format(DB_USER, DB_PASS, DB_HOST, DB_NAME)
-
-    # to setup a persistent connection.
     sql_engine = sql.create_engine(connect_string)
 
-    # get rows to process.
     df = pd.read_sql_query('select * from clickstream where session_id is null', sql_engine)
-
     for i in range(len(df)):
         process_row(df.iloc[i], sql_engine)
 

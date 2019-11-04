@@ -87,6 +87,7 @@ def process_row(row, i_sql_engine):
 # main method.
 def main():
     logging.basicConfig(level=logging.INFO)
+
     connect_string = 'mysql+mysqlconnector://{0}:{1}@{2}/{3}'.format(DB_USER, DB_PASS, DB_HOST, DB_NAME)
     sql_engine = sql.create_engine(connect_string)
 
